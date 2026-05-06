@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Важные задачи</title>
+</head>
+<body>
+{% for task in tasks %}
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+    <span>{{ task.title }} | приоритет: {{ task.priority }} {% if task.completed %} Выполнено {% else %} Не выполнено {% endif %}</span>
+        <a href="{% url 'delete_task' task.id %}" style="text-decoration: none;">
+            <button type="button">Удалить</button>
+        </a>
+</div>
+{% empty %}
+    <p>У вас пока нету задач с высоким приоритетом</p>
+{% endfor %}
+</body>
+</html>
